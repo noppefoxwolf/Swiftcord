@@ -92,6 +92,8 @@ extension Gateway {
                     if let closeCode = self.session?.closeCode {
                         promise.succeed(closeCode)
                         self.swiftcord.trace("promise succeeded with closeCode")
+                    } else {
+                        promise.succeed(.unknown(0))
                     }
                     break
                 case .failure(_):
